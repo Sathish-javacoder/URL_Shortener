@@ -52,8 +52,9 @@ function UrlTable({ data, pagination, onPageChange, onAnalytics, onCopy })
               ) : (
               data.map(row => (
                 <tr key={row.id}>
-                  <td className={styles.originalUrl} title={row.originalUrl}>
-                    {truncate(row.originalUrl)}
+                  <td className={styles.originalUrl}
+                      title={row.originalUrl}>
+                      {truncate(row.originalUrl)}
                   </td>
                   
                   <td className={styles.shortUrl}>
@@ -112,11 +113,13 @@ function UrlTable({ data, pagination, onPageChange, onAnalytics, onCopy })
 
       {totalPages > 1 && (
         <div className={styles.pagination}>
+          
           <button
             className={styles.pageArrow}
             onClick={() => onPageChange(page - 1)}
             disabled={page === 0}
           >&#8249;</button>
+
           {pageNumbers.map(num => (
             <button
               key={num}

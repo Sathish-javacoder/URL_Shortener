@@ -5,26 +5,26 @@ function HeroSection({ onShorten, loading }) {
   const [url, setUrl] = useState('')
   const [error, setError] = useState('')
 
-  const validate = (value) => {
-    if (!value.trim())
-      {
-       return 'Please enter a URL'
-      }
-       try 
-       {
-         const u = new URL(value)
-         if (!['http:', 'https:'].includes(u.protocol))
-         {
-           return 'URL must start with http:// or https://'
-         }
-       } 
-       catch 
-       {
-         return 'Please enter a valid URL (e.g. https://example.com)'
-       }
-    return ''
-  }
-
+  const validate = function(value)
+                  {
+                      if (!value.trim())
+                       {
+                         return 'Please enter a URL'
+                       }
+                         try 
+                        {
+                         const u = new URL(value)
+                         if (!['http:', 'https:'].includes(u.protocol))
+                          {
+                            return 'URL must start with http:// or https://'
+                          }
+                        } 
+                        catch 
+                        {
+                         return 'Please enter a valid URL (e.g. https://example.com)'
+                        }
+                     return ''
+                    }
   const handleSubmit = async (e) => {
     e.preventDefault()
     const err = validate(url)
@@ -49,14 +49,14 @@ function HeroSection({ onShorten, loading }) {
             className={`${styles.input} ${error ? styles.inputError : ''}`}
             type="url"
             value={url}
-            onChange={e => { setUrl(e.target.value);
+            onChange={e => {setUrl(e.target.value);
                      if (error)
                       {
                          setError('')
                       } }}
             placeholder="Enter your original URL e.g. http://demos.nelliwinne.net/URLShortener/"
           />
-          
+        
           <button className={styles.btn} type="submit" disabled={loading}>
             {loading ? (
               <span className={styles.spinner} />
